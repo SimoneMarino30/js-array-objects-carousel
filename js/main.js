@@ -50,18 +50,43 @@ const images = [
   },
 ];
 
+/*********************************************************************
+ *                                                                   *
+ *                              VARIABILI                            *
+ *                                                                   *
+ *********************************************************************/
 const itemsContainerEl = document.getElementById("items");
 
-images.forEach((_image, index) => {
-  let slideClass = "item";
+const slideImg = `
+        <img src="img/01.webp" alt="" class="item">
+        <img src="img/02.webp" alt="" class="item">
+        <img src="img/03.webp" alt="" class="item">
+        <img src="img/04.webp" alt="" class="item">
+        <img src="img/05.webp" alt="" class="item">
+    `;
 
-  if (index == 0) {
-    slideClass += " active";
-  }
+itemsContainerEl.innerHTML += slideImg;
 
-  const slideImg = `<div class="${slideClass}">
-        <img src="./img/01.webp" alt="">
-    </div>`;
+const previuos = document.getElementById("prev");
+const next = document.getElementById("next");
 
-  itemsContainerEl.innerHTML += slideImg;
+/*********************************************************************
+ *                                                                   *
+ *                          ADD EVENT LISTENER                       *
+ *                                                                   *
+ *********************************************************************/
+
+previuos.addEventListener("click", function move() {
+  images.forEach((_image, index) => {
+    if (index == 1) {
+      this.classList.remove("item");
+      this.classList.add("active");
+    }
+  });
+});
+
+next.addEventListener("click", function move() {
+  images.forEach((_image, index) => {
+    console.log(index);
+  });
 });
